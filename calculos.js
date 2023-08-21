@@ -13,46 +13,50 @@ switch(menu){
         Tempo : R$3,00/h
         */
         
-        let la = 0, i = 0, espuma = 0 , feltro = 0, olhos = 0, custo = 0, tempo = 0, preco = 0, lucro_bruto = 0, investimento = 0, lucro_liquido = 0
+        let la , valor_la = 0 , i , espuma  , feltro , olhos , custo , tempo , preco , lucro_bruto , investimento , lucro_liquido 
     debugger
         i = Number(prompt("Quantos tipos de lã você utilizou?"))
 
         if(isNaN(i)){
-            for(la = 0 ; (i > 3 || i < 1 ) || isNaN(i); la ++){
+            for(; (i > 3 || i < 1 ) || isNaN(i);){
                     alert("ERRO - Caracteres inválidos")
                     i = Number(prompt("Quantos tipos de lã você utilizou?"))
             }
         }
-        
-        if(i >  1){
-            for(let i = 0; i > n ; n ++){
-                la = prompt("Quais são os tipos de lã usadas?\n opções: fina, normal, grossa")
+        debugger
+        for(let n = 0; i > n ; n ++){
+            la = prompt("Qual(is) são os tipos de lã usadas?\n opções: fina, normal, grossa")
+            la = la.toUpperCase()
+
+            if(la == "FINA" || la == "NORMAL" || la == "GROSSA"){
+                switch(la){
+                    case "FINA":
+                        la = Number(prompt("Digite o peso total de lã (em g) usado: "))
+                        la = la * 0.08
+                    break;
+                    case "NORMAL":
+                        la = Number(prompt("Digite o peso total de lã (em g) usado: "))
+                        la = la * 0.13
+                    break;
+                    case "GROSSA":
+                        la = Number(prompt("Digite o peso total de lã (em g) usado: "))
+                        la = la * 0.24
+                    break;
+                    }
                 
+                valor_la = valor_la + la
+
+            }else{
+                alert("ERRO - Tipo inválido")
+                n --
             }
-        }else{
-
-        la = prompt("Qual o tipo de lã usado?\n opções: fina, normal, grossa")
-        la = la.toUpperCase()
-
-        if(la == "FINA" || la == "NORMAL" || la == "GROSSA"){
-            switch(la){
-                case "FINA":
-                    la = Number(prompt("Digite o peso total de lã (em g) usado: "))
-                    la = la * 0.08
-                case "NORMAL":
-                    la = Number(prompt("Digite o peso total de lã (em g) usado: "))
-                    la = la * 0.13
-                break;
-                case "GROSSA":
-                    la = Number(prompt("Digite o peso total de lã (em g) usado: "))
-                    la = la * 0.24
-            } 
-        }else{
-            alert("ERRO - Resposta inválida")
-            location.reload()
         }
-    
+        
         espuma = Number(prompt("Digite o peso total de espuma (em g) usado: "))
+        for(; isNaN(espuma) || espuma < 0;)
+        if(isNaN){
+            alert("ERRO - Caracteres inválidos")
+        }
         espuma = espuma * 0.4
 
         feltro = Number(prompt("Digite o tamanho total de feltro (em cm²) usado: "))
@@ -80,7 +84,6 @@ switch(menu){
     
         alert("ERROR")
         location.reload()
-    }
 }
 
 
