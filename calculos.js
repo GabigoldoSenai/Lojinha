@@ -3,6 +3,7 @@ let menu
 menu = Number(prompt("Que tipo de cálculo você quer fazer? \n 1) Cálculo de preço"))
 
 switch(menu){
+    //>>> PRIMEIRO CASO: CÁLCULO DE PREÇO
     case 1:
         /* Materiais base (preços arredondados):
         Lã normal(40g): R$5,00 || Preço/g : R$0,13
@@ -13,23 +14,26 @@ switch(menu){
         Tempo : R$3,00/h
         */
         
-        let la , valor_la = 0 , i , espuma  , feltro , olhos , custo , tempo , preco , lucro_bruto , investimento , lucro_liquido 
-    debugger
-        i = Number(prompt("Quantos tipos de lã você utilizou?"))
+        let la, valor_la = 0 , tipo_la, tamanho_la, espuma  , feltro , olhos , custo , tempo , preco , lucro_bruto , investimento , lucro_liquido 
 
-        if(isNaN(i)){
-            for(; (i > 3 || i < 1 ) || isNaN(i);){
+        //---- Valores para lã
+        let i = Number(prompt("Quantos tipos de lã você utilizou?"))
+        //
+        if((i > 3 || i <= 0 ) || isNaN(i)){
+            for(; (i > 3 || i <= 0 ) || isNaN(i);){
                     alert("ERRO - Caracteres inválidos")
                     i = Number(prompt("Quantos tipos de lã você utilizou?"))
             }
         }
-        debugger
+        //
         for(let n = 0; i > n ; n ++){
-            la = prompt("Qual(is) são os tipos de lã usadas?\n opções: fina, normal, grossa")
-            la = la.toUpperCase()
+            tipo_la = prompt("Qual(is) são os tipos de lã usadas?\n opções: fina, normal, grossa")
+            tipo_la = tipo_la.toUpperCase()
 
-            if(la == "FINA" || la == "NORMAL" || la == "GROSSA"){
-                switch(la){
+            debugger
+            
+            if(tipo_la == "FINA" || tipo_la == "NORMAL" || tipo_la == "GROSSA"){
+                switch(tipo_la){
                     case "FINA":
                         la = Number(prompt("Digite o peso total de lã (em g) usado: "))
                         la = la * 0.08
@@ -40,33 +44,51 @@ switch(menu){
                     break;
                     case "GROSSA":
                         la = Number(prompt("Digite o peso total de lã (em g) usado: "))
-                        la = la * 0.24
+                        la = la * 0.24    
                     break;
                     }
-                
-                valor_la = valor_la + la
 
+                    if(la <= 0 || isNaN(la)){
+                        for(; la <= 0 || (isNaN(la));){
+                            alert("ERRO - Caracteres inválidos")
+                            la = Number(prompt("Digite o peso total de lã (em g) usado: "))
+                        }
+                            if(tipo_la == "FINA"){
+                                la = la * 0.08
+                            }else if(tipo_la == "NORMAL"){
+                                la = la * 0.13
+                            }else{
+                                la = la * 0.24
+                            }
+                        }
+
+                    valor_la = valor_la + la
             }else{
                 alert("ERRO - Tipo inválido")
                 n --
             }
         }
-        
+        //
+        //---- VALORES DE ESPUMA
         espuma = Number(prompt("Digite o peso total de espuma (em g) usado: "))
-        for(; isNaN(espuma) || espuma < 0;)
-        if(isNaN){
-            alert("ERRO - Caracteres inválidos")
-        }
+        if(isNaN(espuma) || espuma < 0){
+            for(; isNaN(espuma) || espuma < 0;){
+                alert("ERRO - Caracteres inválidos")
+                espuma = Number(prompt("Digite o peso total de espuma (em g) usado: "))
+            }
+        }else{
         espuma = espuma * 0.4
+        }
 
+        //---- VALORES DE FELTRO
         feltro = Number(prompt("Digite o tamanho total de feltro (em cm²) usado: "))
         feltro = feltro * 0.142
 
+        //---- VALORES DE OLHOS 
         olhos = Number(prompt("Digite o total de olhos de amigurumi usados: "))
         olhos = olhos * 0.5
 
-        debugger 
-
+        //---- CÁLCULO DE PREÇO, CUSTO, ETC..
         custo = la + espuma + feltro + olhos
 
         tempo = Number(prompt("Insira o tempo que você levou até terminar (em h): "))
@@ -84,6 +106,11 @@ switch(menu){
     
         alert("ERROR")
         location.reload()
+        break;
+        
+        // >>>> NÃO É NENHUMA DAS OPÇÕES
+        default: 
+        alert("ERRO - Valor inválido")
 }
 
 
