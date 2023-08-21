@@ -16,7 +16,7 @@ switch(menu){
         
         let la, valor_la = 0 , tipo_la, tamanho_la, espuma  , feltro , olhos , custo , tempo , preco , lucro_bruto , investimento , lucro_liquido 
         
-        /*
+        
         //---- Valores para lã
         let i = Number(prompt("Quantos tipos de lã você utilizou?"))
         //
@@ -69,7 +69,7 @@ switch(menu){
                 n --
             }
         }
-        */
+        
         //---- VALORES DE ESPUMA
         espuma = prompt(`Digite o peso total de espuma (em g) usado:\nSe não usou, digite "n" `)
         debugger
