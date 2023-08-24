@@ -1,5 +1,6 @@
 let menu
 
+debugger
 const btn_start = document.getElementById("btn_start")
 
 btn_start.addEventListener("click", fn_start)
